@@ -115,6 +115,8 @@ struct ContentView: View {
             Spacer()
         }
         .padding()
+        // Taille minimale de la fenêtre : empêche un redimensionnement trop petit
+        .frame(minWidth: 600, minHeight: 600)
     }
 }
 
@@ -152,7 +154,7 @@ struct SegmentButtonView: View {
 
 // MARK: - Fonctions de segmentation
 
-/// Segmente le texte en respectant une taille maximale pour chaque segment,
+/// Segmente le texte en respectant une taille maximale par segment,
 /// en privilégiant les coupes sur la ligne de tirets.
 func splitTextSmart(_ text: String, maxSegmentLength: Int) -> [String] {
     let separatorLine = "--------------------------------------------------------------------------------"
