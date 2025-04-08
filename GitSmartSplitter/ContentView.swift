@@ -8,7 +8,7 @@
 import SwiftUI
 import AppKit
 
-// MARK: - Mode de segmentation
+// MARK: - Modes de segmentation
 enum SplitMode: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
     case maxLength = "Taille maximale par segment"
@@ -33,14 +33,15 @@ struct ContentView: View {
                 .border(Color.gray)
                 .frame(height: 200)
             
+            // Sélection du mode de segmentation
             Picker("Mode de segmentation", selection: $selectedMode) {
                 ForEach(SplitMode.allCases) { mode in
-                    Text(mode.rawValue)
-                        .tag(mode)
+                    Text(mode.rawValue).tag(mode)
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
             
+            // Paramètre spécifique en fonction du mode choisi
             if selectedMode == .maxLength {
                 HStack {
                     Text("Taille max par segment (en caractères) :")
@@ -68,25 +69,24 @@ struct ContentView: View {
             if !segments.isEmpty {
                 Text("Segments :")
                     .font(.headline)
-                LazyVGrid(columns: [GridItem(.flexible()),
-                                    GridItem(.flexible())],
-                          spacing: 16) {
-                    ForEach(segments.indices, id: \.self) { index in
-                        Button(action: {
-                            let fullSegment = addHeaderToSegment(segment: segments[index],
-                                                                 index: index,
-                                                                 total: segments.count)
-                            // Copie le segment dans le presse-papier
-                            copySegmentToClipboard(fullSegment)
-                            // Affiche une alerte native de confirmation
-                            showCopyAlert(segmentNumber: index + 1, total: segments.count)
-                        }) {
-                            Text("Partie \(index + 1) sur \(segments.count)" + (index == segments.count - 1 ? " - Finale" : ""))
-                                .frame(maxWidth: .infinity, minHeight: 44)
+                // Grille scrollable
+                ScrollView {
+                    LazyVGrid(
+                        columns: [GridItem(.flexible()), GridItem(.flexible())],
+                        spacing: 16
+                    ) {
+                        ForEach(segments.indices, id: \.self) { index in
+                            SegmentButtonView(
+                                segmentIndex: index,
+                                totalSegments: segments.count,
+                                segmentText: segments[index]
+                            )
                         }
-                        .buttonStyle(BorderedButtonStyle())
                     }
+                    .padding(.vertical)
                 }
+                // Hauteur maximale de la grille pour éviter de grossir la fenêtre
+                .frame(maxHeight: 300)
             }
             
             Spacer()
@@ -95,15 +95,46 @@ struct ContentView: View {
     }
 }
 
+// MARK: - Vue pour chaque bouton de segment
+struct SegmentButtonView: View {
+    let segmentIndex: Int
+    let totalSegments: Int
+    let segmentText: String
+    @State private var copied: Bool = false
+    
+    var body: some View {
+        Button(action: {
+            let fullSegment = addHeaderToSegment(segment: segmentText,
+                                                 index: segmentIndex,
+                                                 total: totalSegments)
+            copySegmentToClipboard(fullSegment)
+            // Animation pour indiquer la copie
+            withAnimation {
+                copied = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                withAnimation {
+                    copied = false
+                }
+            }
+        }) {
+            Text(copied ?
+                 "Copié!" :
+                    "Partie \(segmentIndex + 1) sur \(totalSegments)" + (segmentIndex == totalSegments - 1 ? " - Finale" : ""))
+            .frame(maxWidth: .infinity, minHeight: 44)
+        }
+        .buttonStyle(BorderedButtonStyle())
+    }
+}
+
 // MARK: - Fonctions de segmentation
 
-/// Segmente le texte en respectant une taille maximale pour chaque segment, en privilégiant la découpe sur une ligne contenant exactement le séparateur.
+/// Segmente le texte en respectant une taille maximale pour chaque segment et en utilisant la ligne de tirets comme point de découpe.
 func splitTextSmart(_ text: String, maxSegmentLength: Int) -> [String] {
     let separatorLine = "--------------------------------------------------------------------------------"
     var segments: [String] = []
     var currentSegment = ""
     
-    // Découpe le texte en lignes
     let lines = text.components(separatedBy: "\n")
     for line in lines {
         if currentSegment.count + line.count + 1 > maxSegmentLength && !currentSegment.isEmpty {
@@ -125,8 +156,9 @@ func splitTextSmart(_ text: String, maxSegmentLength: Int) -> [String] {
     return segments
 }
 
-/// Segmente le texte afin d’obtenir exactement le nombre de segments demandé.
-/// La fonction tente d'utiliser le séparateur (la ligne de tirets) comme point de coupe et, si besoin, force le découpage.
+/// Segmente le texte pour obtenir exactement le nombre de segments souhaité.
+/// La découpe se fait d'abord en se basant sur le séparateur (la ligne de tirets)
+/// et, si besoin, en forçant le découpage du segment le plus long.
 func splitTextBySegmentCount(_ text: String, numberOfSegments: Int) -> [String] {
     let separatorLine = "--------------------------------------------------------------------------------"
     let totalLength = text.count
@@ -154,7 +186,7 @@ func splitTextBySegmentCount(_ text: String, numberOfSegments: Int) -> [String] 
         segments.append(currentSegment)
     }
     
-    // Si l'on obtient moins de segments que demandés, on force le découpage du segment le plus long.
+    // Si le nombre de segments est inférieur au désiré, on découpe le segment le plus long
     while segments.count < numberOfSegments {
         if let maxIndex = segments.enumerated().max(by: { $0.element.count < $1.element.count })?.offset {
             let segmentToSplit = segments.remove(at: maxIndex)
@@ -176,7 +208,7 @@ func splitTextBySegmentCount(_ text: String, numberOfSegments: Int) -> [String] 
         }
     }
     
-    // Si l'on obtient trop de segments, on fusionne les excédents dans le précédent.
+    // Si l'on obtient trop de segments, fusionner les derniers avec le précédent
     while segments.count > numberOfSegments {
         let lastSegment = segments.removeLast()
         segments[segments.count - 1] += "\n" + lastSegment
@@ -193,29 +225,13 @@ func addHeaderToSegment(segment: String, index: Int, total: Int) -> String {
     return header + segment
 }
 
-// MARK: - Gestion du presse-papier et de l'alerte native
+// MARK: - Copie dans le presse-papier
 
-/// Copie le segment donné dans le presse-papier.
+/// Copie le texte du segment dans le presse-papier.
 func copySegmentToClipboard(_ segment: String) {
     let pasteboard = NSPasteboard.general
     pasteboard.clearContents()
     pasteboard.setString(segment, forType: .string)
-}
-
-/// Affiche une alerte native (NSAlert) indiquant que le segment (numéro segmentNumber) a été copié dans le presse-papier.
-func showCopyAlert(segmentNumber: Int, total: Int) {
-    let alert = NSAlert()
-    alert.messageText = "Segment copié"
-    alert.informativeText = "La Partie \(segmentNumber) sur \(total) a été copiée dans le presse-papier."
-    alert.alertStyle = .informational
-    alert.addButton(withTitle: "OK")
-    if let window = NSApp.keyWindow {
-        // Affichage en tant que sheet rattachée à la fenêtre courante
-        alert.beginSheetModal(for: window, completionHandler: nil)
-    } else {
-        // Sinon, affichage modal classique
-        alert.runModal()
-    }
 }
 
 #Preview {
