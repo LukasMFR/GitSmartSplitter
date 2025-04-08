@@ -8,17 +8,17 @@
 import SwiftUI
 import AppKit
 
-// MARK: - Modes de segmentation
+// MARK: - Modes de segmentation (ordre inversé)
 enum SplitMode: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
-    case maxLength = "Taille maximale par segment"
     case numberOfSegments = "Nombre de segments"
+    case maxLength = "Taille maximale par segment"
 }
 
 // MARK: - Vue principale
 struct ContentView: View {
     @State private var inputText: String = ""
-    // Par défaut, on sélectionne le mode "Nombre de segments"
+    // Mode par défaut : Nombre de segments
     @State private var selectedMode: SplitMode = .numberOfSegments
     @State private var maxSegmentLength: Int = 1000
     @State private var numberOfSegments: Int = 5
@@ -29,7 +29,7 @@ struct ContentView: View {
             Text("GitSmartSplitter")
                 .font(.title)
             
-            // Zone de saisie du texte
+            // Zone de saisie avec bouton de collage depuis le presse-papier
             HStack {
                 Text("Collez ici le texte complet (copie depuis uithub.com) :")
                 Button("Coller depuis le presse-papier") {
@@ -44,7 +44,7 @@ struct ContentView: View {
                 .border(Color.gray)
                 .frame(height: 200)
             
-            // Choix du mode de segmentation via le picker
+            // Picker pour choisir le mode de segmentation
             Picker("Mode de segmentation", selection: $selectedMode) {
                 ForEach(SplitMode.allCases) { mode in
                     Text(mode.rawValue).tag(mode)
@@ -60,10 +60,23 @@ struct ContentView: View {
                         .frame(width: 100)
                 }
             } else {
+                // Mode "Nombre de segments"
                 HStack {
                     Text("Nombre de segments désiré :")
                     TextField("5", value: $numberOfSegments, formatter: NumberFormatter())
                         .frame(width: 100)
+                }
+                // Boutons préréglés pour un choix rapide
+                HStack(spacing: 8) {
+                    ForEach([2, 3, 4, 5, 6, 7], id: \.self) { number in
+                        Button(action: {
+                            numberOfSegments = number
+                        }) {
+                            Text("\(number)")
+                                .frame(width: 30, height: 30)
+                        }
+                        .buttonStyle(BorderedButtonStyle())
+                    }
                 }
             }
             
@@ -80,7 +93,7 @@ struct ContentView: View {
             if !segments.isEmpty {
                 Text("Segments :")
                     .font(.headline)
-                // Grille scrollable qui limite la taille de la vue
+                // Grille scrollable pour afficher les boutons des segments
                 ScrollView {
                     LazyVGrid(
                         columns: [GridItem(.flexible()), GridItem(.flexible())],
@@ -139,7 +152,8 @@ struct SegmentButtonView: View {
 
 // MARK: - Fonctions de segmentation
 
-/// Segmente le texte en respectant une taille maximale par segment, en privilégiant les coupes sur la ligne de tirets.
+/// Segmente le texte en respectant une taille maximale pour chaque segment,
+/// en privilégiant les coupes sur la ligne de tirets.
 func splitTextSmart(_ text: String, maxSegmentLength: Int) -> [String] {
     let separatorLine = "--------------------------------------------------------------------------------"
     var segments: [String] = []
@@ -196,7 +210,7 @@ func splitTextBySegmentCount(_ text: String, numberOfSegments: Int) -> [String] 
         segments.append(currentSegment)
     }
     
-    // Si le nombre de segments est inférieur au désiré, on découpe le segment le plus long.
+    // Si le nombre de segments est inférieur au désiré, découper le segment le plus long.
     while segments.count < numberOfSegments {
         if let maxIndex = segments.enumerated().max(by: { $0.element.count < $1.element.count })?.offset {
             let segmentToSplit = segments.remove(at: maxIndex)
@@ -218,7 +232,7 @@ func splitTextBySegmentCount(_ text: String, numberOfSegments: Int) -> [String] 
         }
     }
     
-    // Fusionner les segments excédentaires, le cas échéant.
+    // Si l'on obtient trop de segments, fusionner les derniers avec le précédent.
     while segments.count > numberOfSegments {
         let lastSegment = segments.removeLast()
         segments[segments.count - 1] += "\n" + lastSegment
@@ -227,7 +241,7 @@ func splitTextBySegmentCount(_ text: String, numberOfSegments: Int) -> [String] 
     return segments
 }
 
-/// Ajoute un en-tête à un segment pour indiquer sa position (et le tag "Finale" pour le dernier segment).
+/// Ajoute un en-tête à un segment pour indiquer sa position (avec le tag "Finale" pour le dernier segment).
 func addHeaderToSegment(segment: String, index: Int, total: Int) -> String {
     let header = (index == total - 1)
     ? "*** Partie \(index + 1) sur \(total) - Finale ***\n\n"
