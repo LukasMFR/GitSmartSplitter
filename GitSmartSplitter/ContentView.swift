@@ -44,6 +44,11 @@ struct ContentView: View {
                 .border(Color.gray)
                 .frame(height: 200)
             
+            // Affichage du nombre total de lignes sous la zone d'édition.
+            Text("Nombre total de lignes : \(inputText.components(separatedBy: "\n").count)")
+                .font(.subheadline)
+                .foregroundColor(.gray)
+            
             // Picker pour choisir le mode de segmentation
             Picker("Mode de segmentation", selection: $selectedMode) {
                 ForEach(SplitMode.allCases) { mode in
