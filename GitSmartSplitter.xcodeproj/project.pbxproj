@@ -187,11 +187,12 @@
 				};
 			};
 			buildConfigurationList = DB2B726F2DA56D7700A790EC /* Build configuration list for PBXProject "GitSmartSplitter" */;
-			developmentRegion = en;
+			developmentRegion = fr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = DB2B726B2DA56D7700A790EC;
 			minimizedProjectReferenceProxies = 1;
