@@ -1,20 +1,24 @@
 # GitSmartSplitter
 
+<p align="center">
+  <img src="assets/logo.png" alt="GitSmartSplitter Logo" width="120" />
+</p>
+
 > ✂️ A clean and efficient macOS SwiftUI app to split large text blocks into manageable segments — perfect for GitHub, documentation, or messaging platforms.
 
 ---
 
 ## 📚 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Installation](#installation)
-- [Build & Run (Xcode)](#build--run-xcode)
-- [File Structure](#file-structure)
-- [Localization](#localization)
-- [Planned Features](#planned-features)
-- [License](#license)
+- [Overview](#-overview)
+- [Features](#-features)
+- [Screenshots](#-screenshots)
+- [Installation](#-installation)
+- [Build & Run (Xcode)](#-build--run-xcode)
+- [File Structure](#-file-structure)
+- [Localization](#-localization)
+- [Planned Features](#-planned-features)
+- [License](#-license)
 
 ---
 
