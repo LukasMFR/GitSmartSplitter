@@ -9,10 +9,18 @@ import SwiftUI
 import AppKit
 
 // MARK: - Modes de segmentation (ordre inversé)
+// On utilise une énumération à raw value String pour avoir accès à rawValue et définir une propriété displayName.
+// La propriété displayName renvoie un LocalizedStringKey basé sur la clé fixe, ce qui permettra à Xcode d'extraire la chaîne.
 enum SplitMode: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
+    
     case numberOfSegments = "Nombre de segments"
     case maxLength = "Taille maximale par segment"
+    
+    var displayName: LocalizedStringKey {
+        // La clé ici est fixe, et sera extraite par le String Catalog.
+        LocalizedStringKey(self.rawValue)
+    }
 }
 
 // MARK: - Vue principale
@@ -52,7 +60,7 @@ struct ContentView: View {
             // Picker pour choisir le mode de segmentation
             Picker("Mode de segmentation", selection: $selectedMode) {
                 ForEach(SplitMode.allCases) { mode in
-                    Text(mode.rawValue).tag(mode)
+                    Text(mode.displayName).tag(mode)
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
@@ -147,13 +155,25 @@ struct SegmentButtonView: View {
                 }
             }
         }) {
-            Text(copied ?
-                 "Copié !" :
-                    "Partie \(segmentIndex + 1) sur \(totalSegments)" +
-                 (segmentIndex == totalSegments - 1 ? " - Finale" : ""))
-            .frame(maxWidth: .infinity, minHeight: 44)
+            if copied {
+                Text("Copié !")
+                    .frame(maxWidth: .infinity, minHeight: 44)
+            } else {
+                Text(segmentLabel(index: segmentIndex, total: totalSegments))
+                    .frame(maxWidth: .infinity, minHeight: 44)
+            }
         }
         .buttonStyle(BorderedButtonStyle())
+    }
+    
+    // Cette fonction renvoie une chaîne formatée à partir d'une clé localisée fixe,
+    // pour que Xcode puisse extraire ces clés dans votre String Catalog.
+    func segmentLabel(index: Int, total: Int) -> String {
+        if index == total - 1 {
+            return String(format: NSLocalizedString("SegmentLabelFinal", comment: "Label for final segment, e.g., Part %d of %d - Final"), index + 1, total)
+        } else {
+            return String(format: NSLocalizedString("SegmentLabel", comment: "Label for segment, e.g., Part %d of %d"), index + 1, total)
+        }
     }
 }
 
@@ -265,6 +285,7 @@ func copySegmentToClipboard(_ segment: String) {
     pasteboard.setString(segment, forType: .string)
 }
 
-#Preview {
+#Preview("en") {
     ContentView()
+        .environment(\.locale, .init(identifier: "en"))
 }

@@ -1,0 +1,170 @@
+{
+  "sourceLanguage" : "fr",
+  "strings" : {
+    "%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "5" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5"
+          }
+        }
+      }
+    },
+    "1000" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1000"
+          }
+        }
+      }
+    },
+    "Coller depuis le presse-papier" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste from clipboard"
+          }
+        }
+      }
+    },
+    "Collez ici le texte complet (copie depuis uithub.com) :" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste the entire text (copied from uithub.com):"
+          }
+        }
+      }
+    },
+    "Copié !" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copied!"
+          }
+        }
+      }
+    },
+    "GitSmartSplitter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitSmartSplitter"
+          }
+        }
+      }
+    },
+    "Mode de segmentation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segmentation Mode"
+          }
+        }
+      }
+    },
+    "Nombre de segments désiré :" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desired number of segments:"
+          }
+        }
+      }
+    },
+    "Nombre total de lignes : %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total number of lines: %lld"
+          }
+        }
+      }
+    },
+    "Segmenter le texte" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Split the text"
+          }
+        }
+      }
+    },
+    "SegmentLabel" : {
+      "comment" : "Label for segment, e.g., Part %d of %d",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Part %d of %d"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partie %d sur %d"
+          }
+        }
+      }
+    },
+    "SegmentLabelFinal" : {
+      "comment" : "Label for final segment, e.g., Part %d of %d - Final",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Part %d of %d - Final"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partie %d sur %d - Finale"
+          }
+        }
+      }
+    },
+    "Segments :" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segments:"
+          }
+        }
+      }
+    },
+    "Taille max par segment (en caractères) :" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum segment length"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
