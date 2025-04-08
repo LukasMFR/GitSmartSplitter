@@ -18,7 +18,8 @@ enum SplitMode: String, CaseIterable, Identifiable {
 // MARK: - Vue principale
 struct ContentView: View {
     @State private var inputText: String = ""
-    @State private var selectedMode: SplitMode = .maxLength
+    // Par défaut, on sélectionne le mode "Nombre de segments"
+    @State private var selectedMode: SplitMode = .numberOfSegments
     @State private var maxSegmentLength: Int = 1000
     @State private var numberOfSegments: Int = 5
     @State private var segments: [String] = []
@@ -28,12 +29,22 @@ struct ContentView: View {
             Text("GitSmartSplitter")
                 .font(.title)
             
-            Text("Collez ici le texte complet (copie depuis uithub.com) :")
+            // Zone de saisie du texte
+            HStack {
+                Text("Collez ici le texte complet (copie depuis uithub.com) :")
+                Button("Coller depuis le presse-papier") {
+                    if let clipboardText = NSPasteboard.general.string(forType: .string) {
+                        inputText = clipboardText
+                    }
+                }
+                .buttonStyle(BorderedButtonStyle())
+            }
+            
             TextEditor(text: $inputText)
                 .border(Color.gray)
                 .frame(height: 200)
             
-            // Sélection du mode de segmentation
+            // Choix du mode de segmentation via le picker
             Picker("Mode de segmentation", selection: $selectedMode) {
                 ForEach(SplitMode.allCases) { mode in
                     Text(mode.rawValue).tag(mode)
@@ -41,7 +52,7 @@ struct ContentView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             
-            // Paramètre spécifique en fonction du mode choisi
+            // Affichage du paramètre en fonction du mode sélectionné
             if selectedMode == .maxLength {
                 HStack {
                     Text("Taille max par segment (en caractères) :")
@@ -69,7 +80,7 @@ struct ContentView: View {
             if !segments.isEmpty {
                 Text("Segments :")
                     .font(.headline)
-                // Grille scrollable
+                // Grille scrollable qui limite la taille de la vue
                 ScrollView {
                     LazyVGrid(
                         columns: [GridItem(.flexible()), GridItem(.flexible())],
@@ -85,7 +96,6 @@ struct ContentView: View {
                     }
                     .padding(.vertical)
                 }
-                // Hauteur maximale de la grille pour éviter de grossir la fenêtre
                 .frame(maxHeight: 300)
             }
             
@@ -108,7 +118,6 @@ struct SegmentButtonView: View {
                                                  index: segmentIndex,
                                                  total: totalSegments)
             copySegmentToClipboard(fullSegment)
-            // Animation pour indiquer la copie
             withAnimation {
                 copied = true
             }
@@ -119,8 +128,9 @@ struct SegmentButtonView: View {
             }
         }) {
             Text(copied ?
-                 "Copié!" :
-                    "Partie \(segmentIndex + 1) sur \(totalSegments)" + (segmentIndex == totalSegments - 1 ? " - Finale" : ""))
+                 "Copié !" :
+                    "Partie \(segmentIndex + 1) sur \(totalSegments)" +
+                 (segmentIndex == totalSegments - 1 ? " - Finale" : ""))
             .frame(maxWidth: .infinity, minHeight: 44)
         }
         .buttonStyle(BorderedButtonStyle())
@@ -129,7 +139,7 @@ struct SegmentButtonView: View {
 
 // MARK: - Fonctions de segmentation
 
-/// Segmente le texte en respectant une taille maximale pour chaque segment et en utilisant la ligne de tirets comme point de découpe.
+/// Segmente le texte en respectant une taille maximale par segment, en privilégiant les coupes sur la ligne de tirets.
 func splitTextSmart(_ text: String, maxSegmentLength: Int) -> [String] {
     let separatorLine = "--------------------------------------------------------------------------------"
     var segments: [String] = []
@@ -156,9 +166,9 @@ func splitTextSmart(_ text: String, maxSegmentLength: Int) -> [String] {
     return segments
 }
 
-/// Segmente le texte pour obtenir exactement le nombre de segments souhaité.
-/// La découpe se fait d'abord en se basant sur le séparateur (la ligne de tirets)
-/// et, si besoin, en forçant le découpage du segment le plus long.
+/// Segmente le texte pour obtenir exactement le nombre de segments demandé.
+/// La découpe est d'abord basée sur le séparateur (la ligne de tirets) et, si nécessaire,
+/// le segment le plus long est scindé pour atteindre le nombre désiré.
 func splitTextBySegmentCount(_ text: String, numberOfSegments: Int) -> [String] {
     let separatorLine = "--------------------------------------------------------------------------------"
     let totalLength = text.count
@@ -186,7 +196,7 @@ func splitTextBySegmentCount(_ text: String, numberOfSegments: Int) -> [String] 
         segments.append(currentSegment)
     }
     
-    // Si le nombre de segments est inférieur au désiré, on découpe le segment le plus long
+    // Si le nombre de segments est inférieur au désiré, on découpe le segment le plus long.
     while segments.count < numberOfSegments {
         if let maxIndex = segments.enumerated().max(by: { $0.element.count < $1.element.count })?.offset {
             let segmentToSplit = segments.remove(at: maxIndex)
@@ -208,7 +218,7 @@ func splitTextBySegmentCount(_ text: String, numberOfSegments: Int) -> [String] 
         }
     }
     
-    // Si l'on obtient trop de segments, fusionner les derniers avec le précédent
+    // Fusionner les segments excédentaires, le cas échéant.
     while segments.count > numberOfSegments {
         let lastSegment = segments.removeLast()
         segments[segments.count - 1] += "\n" + lastSegment
@@ -227,7 +237,7 @@ func addHeaderToSegment(segment: String, index: Int, total: Int) -> String {
 
 // MARK: - Copie dans le presse-papier
 
-/// Copie le texte du segment dans le presse-papier.
+/// Copie le segment dans le presse-papier.
 func copySegmentToClipboard(_ segment: String) {
     let pasteboard = NSPasteboard.general
     pasteboard.clearContents()
