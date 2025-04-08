@@ -8,12 +8,24 @@
             "state" : "translated",
             "value" : "%lld"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
         }
       }
     },
     "5" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "5"
@@ -28,6 +40,12 @@
             "state" : "translated",
             "value" : "1000"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1000"
+          }
         }
       }
     },
@@ -37,6 +55,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Paste from clipboard"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coller depuis le presse-papier"
           }
         }
       }
@@ -48,6 +72,12 @@
             "state" : "translated",
             "value" : "Paste the entire text (copied from uithub.com):"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collez ici le texte complet (copie depuis uithub.com) :"
+          }
         }
       }
     },
@@ -58,12 +88,24 @@
             "state" : "translated",
             "value" : "Copied!"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copié !"
+          }
         }
       }
     },
     "GitSmartSplitter" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitSmartSplitter"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitSmartSplitter"
@@ -78,6 +120,12 @@
             "state" : "translated",
             "value" : "Segmentation Mode"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode de segmentation"
+          }
         }
       }
     },
@@ -87,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desired number of segments:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de segments désiré :"
           }
         }
       }
@@ -98,6 +152,12 @@
             "state" : "translated",
             "value" : "Total number of lines: %lld"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre total de lignes : %lld"
+          }
         }
       }
     },
@@ -108,11 +168,17 @@
             "state" : "translated",
             "value" : "Split the text"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segmenter le texte"
+          }
         }
       }
     },
     "SegmentLabel" : {
-      "comment" : "Label for segment, e.g., Part %d of %d",
+      "comment" : "Label for segment, e.g., 'Part %d of %d'",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -129,7 +195,7 @@
       }
     },
     "SegmentLabelFinal" : {
-      "comment" : "Label for final segment, e.g., Part %d of %d - Final",
+      "comment" : "Label for final segment, e.g., 'Part %d of %d - Final'",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -152,6 +218,44 @@
             "state" : "translated",
             "value" : "Segments:"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segments :"
+          }
+        }
+      }
+    },
+    "splitMode.maxLength" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum segment length"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille maximale par segment"
+          }
+        }
+      }
+    },
+    "splitMode.numberOfSegments" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number of segments"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de segments"
+          }
         }
       }
     },
@@ -160,7 +264,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Maximum segment length"
+            "value" : "Max segment length (in characters):"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille max par segment (en caractères) :"
           }
         }
       }

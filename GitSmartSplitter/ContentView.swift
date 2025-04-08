@@ -9,18 +9,16 @@ import SwiftUI
 import AppKit
 
 // MARK: - Modes de segmentation (ordre inversé)
-// On utilise une énumération à raw value String pour avoir accès à rawValue et définir une propriété displayName.
-// La propriété displayName renvoie un LocalizedStringKey basé sur la clé fixe, ce qui permettra à Xcode d'extraire la chaîne.
+// On utilise une énumération à raw value de type String avec des clés explicites pour la localisation.
+// Ces clés (par exemple, "splitMode.numberOfSegments") seront extraites automatiquement par Xcode.
 enum SplitMode: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
     
-    case numberOfSegments = "Nombre de segments"
-    case maxLength = "Taille maximale par segment"
+    case numberOfSegments = "splitMode.numberOfSegments"
+    case maxLength = "splitMode.maxLength"
     
-    var displayName: LocalizedStringKey {
-        // La clé ici est fixe, et sera extraite par le String Catalog.
-        LocalizedStringKey(self.rawValue)
-    }
+    // La propriété displayName n'est plus utilisée directement dans la vue
+    // afin que les littéraux apparaissent dans le String Catalog.
 }
 
 // MARK: - Vue principale
@@ -60,7 +58,13 @@ struct ContentView: View {
             // Picker pour choisir le mode de segmentation
             Picker("Mode de segmentation", selection: $selectedMode) {
                 ForEach(SplitMode.allCases) { mode in
-                    Text(mode.displayName).tag(mode)
+                    // Utilisation de littéraux pour les clés de localisation,
+                    // afin qu'ils soient extraits automatiquement par Xcode.
+                    if mode == .numberOfSegments {
+                        Text("splitMode.numberOfSegments").tag(mode)
+                    } else {
+                        Text("splitMode.maxLength").tag(mode)
+                    }
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
@@ -166,13 +170,12 @@ struct SegmentButtonView: View {
         .buttonStyle(BorderedButtonStyle())
     }
     
-    // Cette fonction renvoie une chaîne formatée à partir d'une clé localisée fixe,
-    // pour que Xcode puisse extraire ces clés dans votre String Catalog.
+    // Cette fonction utilise NSLocalizedString avec des clés fixes afin que Xcode puisse extraire ces chaînes.
     func segmentLabel(index: Int, total: Int) -> String {
         if index == total - 1 {
-            return String(format: NSLocalizedString("SegmentLabelFinal", comment: "Label for final segment, e.g., Part %d of %d - Final"), index + 1, total)
+            return String(format: NSLocalizedString("SegmentLabelFinal", comment: "Label for final segment, e.g., 'Part %d of %d - Final'"), index + 1, total)
         } else {
-            return String(format: NSLocalizedString("SegmentLabel", comment: "Label for segment, e.g., Part %d of %d"), index + 1, total)
+            return String(format: NSLocalizedString("SegmentLabel", comment: "Label for segment, e.g., 'Part %d of %d'"), index + 1, total)
         }
     }
 }
