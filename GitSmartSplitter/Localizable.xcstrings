@@ -89,24 +89,24 @@
         }
       }
     },
-    "Collez ici le texte complet (copie depuis uithub.com) :" : {
+    "Collez ici le texte complet :" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fügen Sie den gesamten Text ein (von uithub.com kopiert):"
+            "value" : "Fügen Sie hier den vollständigen Text ein:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Paste the entire text (copied from uithub.com):"
+            "value" : "Paste the full text here:"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Collez ici le texte complet (copie depuis uithub.com) :"
+            "value" : "Collez ici le texte complet :"
           }
         }
       }
@@ -129,6 +129,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Copié !"
+          }
+        }
+      }
+    },
+    "Copie depuis :" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopiert von:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copied from:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copie depuis :"
           }
         }
       }
@@ -263,6 +285,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre total de lignes : %lld"
+          }
+        }
+      }
+    },
+    "Ouvrir uithub.com" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "uithub.com öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open uithub.com"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir uithub.com"
           }
         }
       }
@@ -419,6 +463,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Taille max par segment (en caractères) :"
+          }
+        }
+      }
+    },
+    "uithub.com" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "uithub.com"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "uithub.com"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "uithub.com"
           }
         }
       }

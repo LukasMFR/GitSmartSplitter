@@ -22,14 +22,43 @@ struct ContentView: View {
                 .font(.title)
             
             // Zone de saisie avec bouton de collage depuis le presse-papier
-            HStack {
-                Text("Collez ici le texte complet (copie depuis uithub.com) :")
-                Button("Coller depuis le presse-papier") {
-                    if let clipboardText = NSPasteboard.general.string(forType: .string) {
-                        inputText = clipboardText
+            VStack(alignment: .leading, spacing: 4) {
+                HStack {
+                    Text("Collez ici le texte complet :")
+                    Button("Coller depuis le presse-papier") {
+                        if let clipboardText = NSPasteboard.general.string(forType: .string) {
+                            inputText = clipboardText
+                        }
                     }
+                    .buttonStyle(BorderedButtonStyle())
                 }
-                .buttonStyle(BorderedButtonStyle())
+                
+                HStack(spacing: 4) {
+                    Text("Copie depuis :")
+                    
+                    Button(action: {
+                        if let url = URL(string: "https://uithub.com") {
+                            NSWorkspace.shared.open(url)
+                        }
+                    }) {
+                        HStack(spacing: 4) {
+                            Text("uithub.com")
+                                .bold()
+                                .underline()
+                            Image(systemName: "link")
+                        }
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .foregroundColor(.blue)
+                    .onHover { hovering in
+                        if hovering {
+                            NSCursor.pointingHand.set()
+                        }
+                    }
+                    .help("Ouvrir uithub.com")
+                }
+                .font(.subheadline)
+                .foregroundColor(.gray)
             }
             
             TextEditor(text: $inputText)
