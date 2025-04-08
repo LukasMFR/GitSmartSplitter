@@ -133,6 +133,29 @@
         }
       }
     },
+    "FinalHeader" : {
+      "comment" : "Header for final segment, e.g., '*** Part %d of %d - Final ***'",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*** Teil %d von %d - Finale ***"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*** Part %d of %d - Final ***"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*** Partie %d sur %d - Finale ***"
+          }
+        }
+      }
+    },
     "GitSmartSplitter" : {
       "localizations" : {
         "de" : {
@@ -151,6 +174,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitSmartSplitter"
+          }
+        }
+      }
+    },
+    "Header" : {
+      "comment" : "Header for segment, e.g., '*** Part %d of %d ***'",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*** Teil %d von %d ***"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*** Part %d of %d ***"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*** Partie %d sur %d ***"
           }
         }
       }

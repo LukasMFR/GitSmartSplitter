@@ -271,12 +271,24 @@ func splitTextBySegmentCount(_ text: String, numberOfSegments: Int) -> [String] 
     return segments
 }
 
-/// Ajoute un en-tête à un segment pour indiquer sa position (avec le tag "Finale" pour le dernier segment).
+/// Ajoute un en-tête à un segment pour indiquer sa position.
+/// Les clés de traduction "Header" et "FinalHeader" ne contiennent pas les retours à la ligne,
+/// qui sont ajoutés ici dans le code.
 func addHeaderToSegment(segment: String, index: Int, total: Int) -> String {
-    let header = (index == total - 1)
-    ? "*** Partie \(index + 1) sur \(total) - Finale ***\n\n"
-    : "*** Partie \(index + 1) sur \(total) ***\n\n"
-    return header + segment
+    let header: String
+    if index == total - 1 {
+        header = String(
+            format: NSLocalizedString("FinalHeader", comment: "Header for final segment, e.g., '*** Part %d of %d - Final ***'"),
+            index + 1, total
+        )
+    } else {
+        header = String(
+            format: NSLocalizedString("Header", comment: "Header for segment, e.g., '*** Part %d of %d ***'"),
+            index + 1, total
+        )
+    }
+    // Les retours à la ligne sont ajoutés ici pour séparer l'en-tête du segment
+    return header + "\n\n" + segment
 }
 
 // MARK: - Copie dans le presse-papier
