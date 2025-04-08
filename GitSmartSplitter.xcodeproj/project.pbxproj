@@ -45,6 +45,11 @@
 			path = GitSmartSplitterUITests;
 			sourceTree = "<group>";
 		};
+		DB45392A2DA5DA9700E94936 /* assets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = assets;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,7 @@
 		DB2B726B2DA56D7700A790EC = {
 			isa = PBXGroup;
 			children = (
+				DB45392A2DA5DA9700E94936 /* assets */,
 				DB2B72762DA56D7700A790EC /* GitSmartSplitter */,
 				DB2B72852DA56D7800A790EC /* GitSmartSplitterTests */,
 				DB2B728F2DA56D7800A790EC /* GitSmartSplitterUITests */,
@@ -109,6 +115,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				DB2B72762DA56D7700A790EC /* GitSmartSplitter */,
+				DB45392A2DA5DA9700E94936 /* assets */,
 			);
 			name = GitSmartSplitter;
 			packageProductDependencies = (
