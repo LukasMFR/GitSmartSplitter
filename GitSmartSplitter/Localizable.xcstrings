@@ -3,6 +3,12 @@
   "strings" : {
     "%lld" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19,6 +25,12 @@
     },
     "5" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -35,6 +47,12 @@
     },
     "1000" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1000"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +69,12 @@
     },
     "Coller depuis le presse-papier" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus Zwischenablage einfügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -67,6 +91,12 @@
     },
     "Collez ici le texte complet (copie depuis uithub.com) :" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fügen Sie den gesamten Text ein (von uithub.com kopiert):"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -83,6 +113,12 @@
     },
     "Copié !" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopiert!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -99,6 +135,12 @@
     },
     "GitSmartSplitter" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitSmartSplitter"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -115,6 +157,12 @@
     },
     "Mode de segmentation" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segmentierungsmodus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -131,6 +179,12 @@
     },
     "Nombre de segments désiré :" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gewünschte Segmentanzahl :"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -147,6 +201,12 @@
     },
     "Nombre total de lignes : %lld" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamtanzahl Zeilen: %lld"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -163,6 +223,12 @@
     },
     "Segmenter le texte" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text segmentieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -180,6 +246,12 @@
     "SegmentLabel" : {
       "comment" : "Label for segment, e.g., 'Part %d of %d'",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teil %d von %d"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,6 +269,12 @@
     "SegmentLabelFinal" : {
       "comment" : "Label for final segment, e.g., 'Part %d of %d - Final'",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teil %d von %d - Finale"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -213,6 +291,12 @@
     },
     "Segments :" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segmente :"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -229,6 +313,12 @@
     },
     "splitMode.maxLength" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximale Segmentlänge (in Zeichen):"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -245,6 +335,12 @@
     },
     "splitMode.numberOfSegments" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anzahl von Segmenten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -261,6 +357,12 @@
     },
     "Taille max par segment (en caractères) :" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximale Segmentlänge"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
