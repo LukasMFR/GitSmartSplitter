@@ -52,7 +52,7 @@ It adds contextual headers to each segment and enables one-click copying for eas
 
 You can either:
 
-- Download the `.app` from the [Releases](https://github.com/your-username/GitSmartSplitter/releases)
+- Download the `.app` from the [Releases](https://github.com/LukasMFR/GitSmartSplitter/releases)
 - Or clone and build manually (see below)
 
 ---
@@ -62,7 +62,7 @@ You can either:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/GitSmartSplitter.git
+   git clone https://github.com/LukasMFR/GitSmartSplitter.git
    cd GitSmartSplitter
    ```
 
