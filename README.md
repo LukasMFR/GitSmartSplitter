@@ -44,7 +44,15 @@ It adds contextual headers to each segment and enables one-click copying for eas
 
 ## 📸 Screenshots
 
-> _(Add screenshots here, e.g. `assets/screenshot-main.png`)_
+### 🖼️ Main Interface
+
+![Main Interface](assets/screenshot-main.png)
+
+This screenshot shows the main interface of GitSmartSplitter:
+- A clean, native SwiftUI layout
+- Text input with clipboard support
+- Toggle between segmentation modes
+- Smart preview of segments with copy buttons
 
 ---
 
