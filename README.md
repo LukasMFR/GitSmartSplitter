@@ -50,7 +50,9 @@ It adds contextual headers to each segment and enables one-click copying for eas
 
 ### 🖼️ Main Interface
 
-![Main Interface](assets/screenshot-main.png)
+<p align="center">
+  <img src="assets/screenshot-main.png" alt="Main Interface" width="600" />
+</p>
 
 This screenshot shows the main interface of GitSmartSplitter:
 - A clean, native SwiftUI layout
