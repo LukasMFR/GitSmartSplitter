@@ -115,8 +115,8 @@ struct ContentView: View {
             Spacer()
         }
         .padding()
-        // Taille minimale de la fenêtre : empêche un redimensionnement trop petit
-        .frame(minWidth: 600, minHeight: 600)
+        // Taille minimale de la fenêtre : largeur à 600 points et hauteur à 700 points
+        .frame(minWidth: 600, minHeight: 700)
     }
 }
 
