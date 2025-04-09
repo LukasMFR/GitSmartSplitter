@@ -62,7 +62,9 @@ struct ContentView: View {
             }
             
             TextEditor(text: $inputText)
-                .border(Color.gray)
+                .padding(8)
+                .background(RoundedRectangle(cornerRadius: 10).fill(Color(NSColor.textBackgroundColor)))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray.opacity(0.4), lineWidth: 1))
                 .frame(height: 200)
             
             // Affichage du nombre total de lignes sous la zone d'édition.
