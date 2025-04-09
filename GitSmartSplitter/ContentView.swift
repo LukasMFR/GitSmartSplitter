@@ -151,9 +151,10 @@ struct ContentView: View {
                                     )
                                 }
                             }
-                            .padding(.horizontal, 8) // 👈 Ajouté
+                            .padding(.top, 12) // 👈 Ajouté pour éviter le rognage en haut
+                            .padding(.horizontal, 8)
                             .padding(.bottom)
-                            .background(Color.clear) // 👈 Important pour bien respirer visuellement
+                            .background(Color.clear)
                         }
                         .frame(maxHeight: 300)
                     }
