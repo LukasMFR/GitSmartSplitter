@@ -317,19 +317,19 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Du liest den Anfang eines mehrteiligen Codes. Mach dich damit vertraut und warte auf weitere Anweisungen."
+            "value" : "Du liest den Anfang eines mehrteiligen Codes. Mach dich mit der Struktur vertraut, erkenne Muster und warte auf meine weiteren Anweisungen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You are reading the beginning of a multi-part codebase. Familiarize yourself and wait for further instructions."
+            "value" : "You are reading the beginning of a multi-part codebase. Take your time to understand the structure, get familiar with the style and patterns, and wait for further instructions."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu lis le début d’un découpage en plusieurs parties. Prends le temps de te familiariser avec le code et attends les instructions."
+            "value" : "Tu lis le début d’un code divisé en plusieurs segments. Prends le temps de comprendre la structure, de repérer les habitudes d’écriture, et attends mes prochaines instructions."
           }
         }
       }
@@ -340,19 +340,19 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Du liest jetzt den letzten Teil. Du kannst mit der Analyse beginnen, wenn du bereit bist."
+            "value" : "Du liest nun den letzten Teil dieses mehrteiligen Codes. Du hast jetzt den vollständigen Überblick. Ich werde dir als Nächstes Anweisungen geben."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You are now reading the final part of the codebase. You may now begin analysis if ready."
+            "value" : "You are reading the final part of this multi-part codebase. You now have a complete overview. I will provide instructions next."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu lis maintenant la dernière partie. Tu peux commencer l’analyse si tu es prêt."
+            "value" : "Tu lis maintenant la dernière partie de ce découpage. Tu as désormais une vue d’ensemble complète. Je vais te donner mes instructions ensuite."
           }
         }
       }
@@ -363,19 +363,19 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dies ist ein Zwischensegment. Unternimm noch nichts. Lies weiter."
+            "value" : "Du liest einen mittleren Abschnitt des Codes. Lies weiter, um den Kontext zu verstehen. Unternimm noch nichts."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This is an intermediate segment. Do not take action yet. Keep reading."
+            "value" : "You are reading an intermediate part of the codebase. Continue reading and gathering context. Do not take any action yet."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Voici une partie intermédiaire. Ne fais rien pour le moment. Continue ta lecture."
+            "value" : "Tu es en train de lire une partie intermédiaire. Continue à lire pour mieux cerner le contexte global. Ne fais encore aucune action."
           }
         }
       }
