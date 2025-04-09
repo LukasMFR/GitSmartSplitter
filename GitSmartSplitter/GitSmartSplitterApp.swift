@@ -13,8 +13,16 @@ struct GitSmartSplitterApp: App {
         WindowGroup {
             ContentView()
         }
+        
+        // ✅ Ce bloc gère la fenêtre "Paramètres…" automatiquement
+        Settings {
+            SettingsView()
+        }
+        
+        // ✅ Commandes supplémentaires (sans redéclarer "Paramètres…")
         .commands {
             CommandGroup(after: .appInfo) {
+                Divider()
                 Button("Vérifier les mises à jour…") {
                     UpdateChecker.checkForUpdates()
                 }
