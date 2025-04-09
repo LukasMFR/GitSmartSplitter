@@ -32,7 +32,7 @@ class UpdateChecker {
                         DispatchQueue.main.async {
                             let alert = NSAlert()
                             alert.messageText = String(localized: "update_available_title")
-                            alert.informativeText = String(localized: "update_available_description \(latestVersion) \(currentVersion)")
+                            alert.informativeText = String(localized: "update_available_body \(latestVersion) \(currentVersion)")
                             alert.alertStyle = .informational
                             alert.addButton(withTitle: String(localized: "download_button"))
                             alert.addButton(withTitle: String(localized: "later_button"))
@@ -46,10 +46,10 @@ class UpdateChecker {
                     } else {
                         DispatchQueue.main.async {
                             let alert = NSAlert()
-                            alert.messageText = "Aucune mise à jour disponible"
-                            alert.informativeText = "Vous utilisez déjà la dernière version (\(currentVersion))."
+                            alert.messageText = String(localized: "update_latest_title")
+                            alert.informativeText = String(localized: "update_latest_body")
                             alert.alertStyle = .informational
-                            alert.addButton(withTitle: "OK")
+                            alert.addButton(withTitle: String(localized: "ok_button"))
                             alert.runModal()
                         }
                     }
