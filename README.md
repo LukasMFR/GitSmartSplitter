@@ -40,6 +40,9 @@ It adds contextual headers to each segment and enables one-click copying for eas
 - 🧠 Smart splitting: prefers clean breaks on separator lines
 - 🔗 Clickable reference link (`uithub.com`)
 - 🖱️ One-click copy for each segment with animated feedback
+- 🛎️ Check for updates directly from the macOS menu bar
+- ⚙️ Native macOS Settings menu to toggle smart LLM prompts
+- 🤖 Optional default prompts added for LLM compatibility
 - 🌍 Multilingual support: English (default), French, and German
 - 📐 Resizable, native SwiftUI interface
 - 🧪 Includes unit and UI tests
