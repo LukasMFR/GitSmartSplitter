@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @AppStorage("includeDefaultPrompt") private var includeDefaultPrompt = true
+    @AppStorage("includeDefaultPrompt") private var includeDefaultPrompt = false
     
     var body: some View {
         Form {
