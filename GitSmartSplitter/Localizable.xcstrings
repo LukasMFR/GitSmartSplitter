@@ -68,6 +68,7 @@
       }
     },
     "Coller depuis le presse-papier" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -112,6 +113,7 @@
       }
     },
     "Copié !" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -179,6 +181,7 @@
       }
     },
     "GitSmartSplitter" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -312,6 +315,7 @@
       }
     },
     "Segmenter le texte" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -445,7 +449,11 @@
         }
       }
     },
+    "Taille max par segment :" : {
+
+    },
     "Taille max par segment (en caractères) :" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

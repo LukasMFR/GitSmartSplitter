@@ -1,0 +1,15 @@
+{
+  "originHash" : "9f91e4f81ede77417336265aa28e271457fee48268566f92c0d3fbc958f3f50b",
+  "pins" : [
+    {
+      "identity" : "neumorphic",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/costachung/neumorphic/",
+      "state" : {
+        "branch" : "master",
+        "revision" : "aae74c3e39fba485a540927e8050f288eff1228c"
+      }
+    }
+  ],
+  "version" : 3
+}

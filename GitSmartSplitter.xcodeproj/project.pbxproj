@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DBCFB2942DA671690052CF62 /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = DBCFB2932DA671690052CF62 /* Neumorphic */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		DB2B72832DA56D7800A790EC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -57,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBCFB2942DA671690052CF62 /* Neumorphic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +124,7 @@
 			);
 			name = GitSmartSplitter;
 			packageProductDependencies = (
+				DBCFB2932DA671690052CF62 /* Neumorphic */,
 			);
 			productName = GitSmartSplitter;
 			productReference = DB2B72742DA56D7700A790EC /* GitSmartSplitter.app */;
@@ -204,6 +210,9 @@
 			);
 			mainGroup = DB2B726B2DA56D7700A790EC;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				DBCFB2922DA671690052CF62 /* XCRemoteSwiftPackageReference "neumorphic" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DB2B72752DA56D7700A790EC /* Products */;
 			projectDirPath = "";
@@ -566,6 +575,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DBCFB2922DA671690052CF62 /* XCRemoteSwiftPackageReference "neumorphic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/costachung/neumorphic/";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DBCFB2932DA671690052CF62 /* Neumorphic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DBCFB2922DA671690052CF62 /* XCRemoteSwiftPackageReference "neumorphic" */;
+			productName = Neumorphic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DB2B726C2DA56D7700A790EC /* Project object */;
 }
