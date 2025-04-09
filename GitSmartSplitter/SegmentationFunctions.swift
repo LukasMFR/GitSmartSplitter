@@ -101,19 +101,36 @@ func splitTextBySegmentCount(_ text: String, numberOfSegments: Int) -> [String] 
 /// Les clés "Header" et "FinalHeader" ne contiennent pas les retours à la ligne,
 /// qui sont ajoutés ici dans le code pour séparer l'en-tête du segment.
 func addHeaderToSegment(segment: String, index: Int, total: Int) -> String {
-    let header: String
+    let includePrompt = UserDefaults.standard.bool(forKey: "includeDefaultPrompt")
+    
+    // En-tête de position du segment
+    let positionHeader: String
     if index == total - 1 {
-        header = String(
+        positionHeader = String(
             format: NSLocalizedString("FinalHeader", comment: "Header for final segment, e.g., '*** Part %d of %d - Final ***'"),
             index + 1, total
         )
     } else {
-        header = String(
+        positionHeader = String(
             format: NSLocalizedString("Header", comment: "Header for segment, e.g., '*** Part %d of %d ***'"),
             index + 1, total
         )
     }
-    return header + "\n\n" + segment
+    
+    // Prompt LLM conditionnel
+    var prompt: String = ""
+    if includePrompt {
+        if index == 0 {
+            prompt = NSLocalizedString("LLMPromptBegin", comment: "Prompt for the first segment")
+        } else if index == total - 1 {
+            prompt = NSLocalizedString("LLMPromptEnd", comment: "Prompt for the last segment")
+        } else {
+            prompt = NSLocalizedString("LLMPromptMiddle", comment: "Prompt for intermediate segments")
+        }
+        prompt += "\n\n"
+    }
+    
+    return positionHeader + "\n\n" + prompt + segment
 }
 
 /// Copie le segment dans le presse-papier.
