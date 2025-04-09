@@ -155,6 +155,9 @@
         }
       }
     },
+    "download_button" : {
+
+    },
     "FinalHeader" : {
       "comment" : "Header for final segment, e.g., '*** Part %d of %d - Final ***'",
       "localizations" : {
@@ -222,6 +225,9 @@
           }
         }
       }
+    },
+    "later_button" : {
+
     },
     "Mode de segmentation" : {
       "localizations" : {
@@ -488,6 +494,22 @@
           }
         }
       }
+    },
+    "update_available_description %@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "update_available_description %1$@ %2$@"
+          }
+        }
+      }
+    },
+    "update_available_title" : {
+
+    },
+    "Vérifier les mises à jour…" : {
+
     }
   },
   "version" : "1.0"

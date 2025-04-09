@@ -13,5 +13,12 @@ struct GitSmartSplitterApp: App {
         WindowGroup {
             ContentView()
         }
+        .commands {
+            CommandGroup(after: .appInfo) {
+                Button("Vérifier les mises à jour…") {
+                    UpdateChecker.checkForUpdates()
+                }
+            }
+        }
     }
 }
